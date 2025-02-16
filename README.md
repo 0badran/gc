@@ -1,4 +1,21 @@
-<h1>gc, Generate Component</h1>
-<h3>CLI For Generate React Component</h3>
+# React Generator Tools
+A minimalist <code><span style='color:red;font-weight:bold;'>CLI</span></code> tool to automate faster logic and components.
+### Installation
+```bash
+npm i -D toolg
+```
 
-<code>gc [name]</code>
+#### Create configuration file
+```bash
+npx toolg-init
+```
+
+then, create the first component.
+```bash
+toolg <name>
+```
+
+or, create service to fetch data
+```bash
+-s <type> create service
+```

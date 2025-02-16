@@ -1,21 +1,18 @@
 {
-  "name": "gc",
+  "name": "toolg",
   "version": "1.0.0",
   "main": "main.js",
   "type": "module",
-  "scripts": {
-    "test": "jest"
-  },
   "keywords": [],
   "author": "0badran",
-  "bin": "./main.js",
+  "bin": {
+    "toolg": "./main.js",
+    "toolg-init": "./cli.js"
+  },
   "license": "ISC",
   "description": "CLI For Generate React Component",
   "dependencies": {
     "commander": "^13.1.0",
     "inquirer": "^12.4.1"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0"
   }
 }
