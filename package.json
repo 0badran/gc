@@ -1,10 +1,17 @@
 {
   "name": "toolg",
-  "description": "CLI For Generate React Tools",
+  "description": "toolg is a Node.js CLI For Generate React Tools",
   "version": "1.0.0",
   "main": "main.js",
   "type": "module",
-  "keywords": [],
+  "keywords": [
+    "reactjs",
+    "nextjs",
+    "cli",
+    "automate",
+    "tasks",
+    "generate"
+  ],
   "author": "0badran",
   "bin": {
     "toolg": "./main.js",
