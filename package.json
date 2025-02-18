@@ -1,5 +1,6 @@
 {
   "name": "toolg",
+  "description": "CLI For Generate React Tools",
   "version": "1.0.0",
   "main": "main.js",
   "type": "module",
@@ -9,8 +10,15 @@
     "toolg": "./main.js",
     "toolg-init": "./scripts/cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0badran/toolg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0badran/toolg/issues"
+  },
+  "homepage": "https://github.com/0badran/toolg#readme",
   "license": "ISC",
-  "description": "CLI For Generate React Tools",
   "dependencies": {
     "commander": "^13.1.0",
     "inquirer": "^12.4.1",
