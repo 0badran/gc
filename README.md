@@ -2,7 +2,7 @@
 A minimalist <code><span style='color:red;font-weight:bold;'>CLI</span></code> tool to automate faster logic and components.
 ### Installation
 ```bash
-npm i -D toolg
+npm i -g toolg
 ```
 
 #### Create configuration file
@@ -17,5 +17,5 @@ toolg <name>
 
 or, create service to fetch data
 ```bash
--s <type> create service
+toolg <name> -s <type>
 ```

@@ -6,7 +6,7 @@ export default function generateComponent(name) {
       return (
          <h1>${name}</h1>
       )}`);
-   fs.writeFileSync(`${targetPath}/${name}.test.${fileType}`, `import {render, screen} from '@testing-library/react'
+   fs.writeFileSync(`${targetPath}/components/${name}.test.${fileType}`, `import {render, screen} from '@testing-library/react'
    import '@testing-library/jest-dom'
    import ${name} from './${name}';
 

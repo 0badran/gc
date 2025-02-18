@@ -7,12 +7,13 @@
   "author": "0badran",
   "bin": {
     "toolg": "./main.js",
-    "toolg-init": "./cli.js"
+    "toolg-init": "./scripts/cli.js"
   },
   "license": "ISC",
-  "description": "CLI For Generate React Component",
+  "description": "CLI For Generate React Tools",
   "dependencies": {
     "commander": "^13.1.0",
-    "inquirer": "^12.4.1"
+    "inquirer": "^12.4.1",
+    "ora": "^8.2.0"
   }
 }

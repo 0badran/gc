@@ -5,23 +5,14 @@ import { convertCase, getProjectRoot } from './utils/utils.js';
 import { createCRUD, createService, deleteService, getService, updateService } from './src/create_service.js';
 import generateComponent from './src/create_component.js';
 
-if (!fs.existsSync('gc.config.json')) {
-   console.error('Config file not found:');
-   console.warn('Run `gc --init` to get started');
-   process.exit(1);
-}
-
-export const rootPath = getProjectRoot();
-export const rootFiles = fs.readdirSync(rootPath);
-export const hasAppFolder = rootFiles.includes('app');
-export const targetPath = `${rootPath}/${hasAppFolder ? 'app' : 'src'}`;
-export const config = JSON.parse(fs.readFileSync('gc.config.json', 'utf-8'));
-export const fileType = config.typescript ? 'ts' : 'js';
+const packageJson = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
 
 program
-   .name('gc, generate-react-component')
-   .description('Create a new component')
+   .name('toolg, tool-generator')
+   .version(packageJson.version, '-v, --version', 'Display the version of the tool') // Properly defining version
    .argument('<name>', 'The name for tools to generate')
+   .description('Create a component by default or a service with the -s flag')
+   .helpOption('-h, --help', 'Display help for command')
    .option('-s, --service <char>', 'Create a service like(delete, update, create, read, all) services')
    .description('-s <service> [c|r|u|d|a]')
    .parse();
@@ -29,26 +20,43 @@ program
 const args = program.args;
 const opts = program.opts();
 const tmp = args[0];
-let name;
+
+if (!fs.existsSync('toolg.config.json')) {
+   console.error('Config file not found:');
+   console.warn('Run `npx toolg-init` to create a config file');
+   process.exit(1);
+}
+
+export const rootPath = getProjectRoot();
+export const rootFiles = fs.readdirSync(rootPath);
+export const hasAppFolder = rootFiles.includes('app');
+export const targetPath = `${rootPath}/${hasAppFolder ? 'app' : 'src'}`;
+export const config = JSON.parse(fs.readFileSync('toolg.config.json', 'utf-8'));
+export const fileType = config.typescript ? 'ts' : 'js';
 
 fs.mkdirSync(`${targetPath}/${opts.service ? 'services' : 'components'}`, { recursive: true });
 if (opts.service) {
-   name = convertCase(tmp);
+   const name = convertCase(tmp);
    const service = opts.service;
    switch (service) {
-      case 'c' || 'create':
+      case 'c':
+      case 'create':
          createService(name);
          break;
-      case 'r' || 'read':
+      case 'r':
+      case 'read':
          getService(name);
          break;
-      case 'u' || 'update':
+      case 'u':
+      case 'update':
          updateService(name);
          break;
-      case 'd' || 'delete':
+      case 'd':
+      case 'delete':
          deleteService(name);
          break;
-      case 'a' || 'all':
+      case 'a':
+      case 'all':
          createCRUD(name);
          break;
       default:
@@ -56,7 +64,6 @@ if (opts.service) {
          console.warn('Use c, r, u, d, or a instead');
    }
 } else {
-   name = convertCase(tmp, 'pascal');
+   const name = convertCase(tmp, 'pascal');
    generateComponent(name);
 }
-
