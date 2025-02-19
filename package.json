@@ -1,7 +1,7 @@
 {
   "name": "toolg",
   "description": "toolg is a Node.js CLI For Generate React Tools",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "main": "main.js",
   "type": "module",
   "keywords": [
